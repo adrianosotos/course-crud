@@ -8,9 +8,14 @@ const PORT = 5000
 app.use(bodyParser.json());
 
 app.post('/', function (req, res) {
-  const { name, duration } = req.query || {}
+  const { level, book, bookPublisher, active, modality, name, duration } = req.query || {}
 
   Course.create({
+    level,
+    book,
+    bookPublisher,
+    active,
+    modality,
     name,
     duration
   })
@@ -46,12 +51,17 @@ app.get('/', function (req, res) {
 })
 
 app.put('/', function (req, res) {
-  const { id, name, duration } = req.query || {}
+  const { id, level, book, bookPublisher, active, modality, name, duration } = req.query || {}
 
   Course.findOneAndUpdate(
     id,
     {
       $set: {
+        level,
+        book,
+        bookPublisher,
+        active,
+        modality,
         name,
         duration
       }
@@ -89,8 +99,6 @@ app.delete('/', function (req, res) {
     })
   })
 })
-
-
 
 app.listen(PORT, function () {
   console.log(`Server Listening on ${PORT}`)
