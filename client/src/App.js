@@ -1,10 +1,10 @@
 import './styles/App.css';
-import CourseForm from './components/courseForm'
+import Dashboard from './pages/dashboard'
 
 function App() {
   return (
     <div className="App">
-      <CourseForm />
+      <Dashboard />
     </div>
   );
 }
