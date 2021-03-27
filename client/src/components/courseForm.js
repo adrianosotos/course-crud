@@ -1,21 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Input from './input'
 import Select from  './select'
 
-function CourseForm () {
-  const coursePayload = {
+function CourseForm ({ cleanSelectedCourse, selectedCourse, updateCourse, deleteCourse, submitCourse }) {
+  let coursePayload = {
     level: '',
     name: '',
     book: '',
     bookPublisher: '',
     active: '',
     modality: '',
-    duration: ''
+    duration: '',
+    courseId: ''
   }
 
-  const [course, setCourse] = useState(coursePayload);
+  const [course, setCourse] = useState(coursePayload)
+  const [errors, setErrors] = useState(coursePayload)
 
-  const [errors, setErrors] = useState(coursePayload);
+  useEffect(() => {
+    if (selectedCourse && Object.keys(selectedCourse).length != 0) {
+      setErrors(coursePayload)
+      setCourse(selectedCourse)
+    } else {
+      setCourse(coursePayload)
+    }
+  }, [selectedCourse])
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -38,12 +47,12 @@ function CourseForm () {
   }
 
   function hasEmptyData() {
-    return Object.values(course).some(data => !data)
+    return Object.values(course).some(data => data !== 0 && !data)
   }
 
   function getEmpty(courseData) {
     return Object.keys(courseData).reduce((obj, data) => {
-      if (!course[data]) {
+      if (data !== '_id' && data!== '__v' && !course[data]) {
         obj[data] = `Preenchimento obrigatorio`
       }
       return obj
@@ -63,14 +72,29 @@ function CourseForm () {
   }
 
   function handleSubmit() {
-    debugger
     getEmptyFields()
     if (hasEmptyData()) {
       return alert(`Corrija os campos destacados`)
     }
 
-    console.log(course)
-    resetInputs()
+    try {
+      submitCourse(course)
+      return resetInputs()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  function handleUpdateCourse () {
+    getEmptyFields()
+    if (hasEmptyData()) {
+      return alert(`Corrija os campos destacados`)
+    }
+
+    updateCourse({
+      ...selectedCourse,
+      ...course
+    })
   }
 
   return (
@@ -144,10 +168,21 @@ function CourseForm () {
           onBlur={onBlur}
           error={errors.duration}
         />
+
+        <Input 
+          label={'Curso ID'}
+          onChange={handleChange}
+          name={'courseId'}
+          value={course.courseId || ''}
+          onBlur={onBlur}
+          error={errors.courseId}
+        />
       </form>
       <button onClick={handleSubmit}>Salvar</button>
+      <button onClick={handleUpdateCourse}>Alterar</button>
+      <button onClick={() => deleteCourse(course)}>Deletar</button>
+      <button onClick={cleanSelectedCourse}>Limpar</button>
     </>
-    
   )
 }
 
