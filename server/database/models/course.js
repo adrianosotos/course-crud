@@ -35,6 +35,11 @@ const Course = mongoose.model('Course', {
     type: Number,
     require: true,
     trim: true
+  },
+  courseId: {
+    type: Number,
+    require: true,
+    trim: true
   }
 });
 
