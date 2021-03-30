@@ -15,7 +15,7 @@ function Dashboard () {
   }, [selectedFilter])
 
   function fetchCourses () {
-    const url = 'http://localhost:5000'
+    const url = 'http://localhost:5000/api/courses'
     const params = selectedFilter || ''
 
     Axios.get(`${url}${params}`)
@@ -36,19 +36,19 @@ function Dashboard () {
   }
 
   function submitCourse (course) {
-    Axios.post('http://localhost:5000', {
+    Axios.post('http://localhost:5000/api/courses', {
       ...course
     })
   }
 
   function updateCourse (course) {
-    Axios.patch('http://localhost:5000', course)
+    Axios.patch('http://localhost:5000/api/courses', course)
     .then(() => fetchCourses())
     .catch((error) => console.log(error))
   }
 
   function deleteCourse (course) {
-    Axios.delete('http://localhost:5000', { 
+    Axios.delete('http://localhost:5000/api/courses', { 
       data: { id: course._id },
       headers: { "Authorization": "***" }
     })
