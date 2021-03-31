@@ -28,7 +28,7 @@ function Login () {
   }
   
   return (
-    <div>
+    <div className="login-form">
       <div>
            { error && error.messages }
       </div>
@@ -41,6 +41,7 @@ function Login () {
         <Input 
           label="Password"
           name="password"
+          type={'password'}
           onChange={handleChange}
         />
       </form>

@@ -57,7 +57,7 @@ function Dashboard () {
   }
 
   return (
-    <div>
+    <div className="dashboard">
       <CourseFilter 
         filters={filters}
         setSelectedFilter={setSelectedFilter}

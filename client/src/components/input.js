@@ -1,11 +1,11 @@
-function Input ({ label, onChange, name, type, value, error, onBlur}) {
+function Input ({ label, onChange, name, type, value, error, onBlur, styleClass }) {
   return (
-    <div className='input-wrapper'>
+    <div className={styleClass}>
       <label>{label}:</label>
       <input 
         onChange={(e) => onChange(e)}
+        type={type || 'text'}
         name={name}
-        type={type}
         value={value}
         onBlur={onBlur}
       />

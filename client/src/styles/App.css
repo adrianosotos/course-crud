@@ -1,38 +1,218 @@
-.App {
-  text-align: center;
+body {
+  margin-top: 70px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2.4rem;
+  -webkit-transition: background-color .25s,color .25s;
+  transition: background-color .25s,color .25s;
+  background-color: #3f51b5;
+  color: #fff;
+  box-shadow: none;
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 0 0.2rem rgb(0 0 0 / 10%), 0 0.2rem 0.4rem rgb(0 0 0 / 20%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav {
+  max-width: 90%;
+  margin: 10px auto;
+  text-align: right;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 2%;
+  cursor: pointer;
+}
+
+nav a:hover {
+  color: black;
+}
+
+.login-form {
+  border: 3px solid #f1f1f1;
+  width: 500px;
+  padding: 50px;
+  margin: auto;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 50px;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+}
+
+.dashboard {
+  margin: auto;
+  width: 70%;
+  border: 3px solid #f1f1f1;
+  padding: 30px;
+}
+
+.filter-select label {
+  margin-right: 10px;
+}
+
+.filter-select select {
+  width: 200px;
+}
+
+.course-form {
+  width: 100%;
+}
+
+.course-form .row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  margin: 10px 0;
+}
+
+.course-input {
+  margin-right: 20px;
+}
+
+.course-input.select {
+  padding-top: 5px;
+}
+
+.course-form label {
+  margin-right: 5px;
+}
+
+.course-form input {
+  width: 500px;
+  margin: 5px;
+}
+
+.small-input input{
+  width: 40px;
+}
+
+.controls {
+  margin: 10px
+}
+
+.controls button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 7px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+@media only screen and (max-width: 756px) {
+  .login-form {
+    width: 60%;
+  }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .login-form button {
+    width: 100%;
+    margin: 10px auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .dashboard {
+    width: 70%;
   }
+
+  .course-form .row {
+    flex-direction: column;
+  }
+
+  .course-form input {
+    width: 100%;
+    margin: 5px;
+  }
+
+  .small-input input{
+    width: 47%;
+  }
+
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr { border: 1px solid #ccc; }
+  
+  td { 
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+  }
+
+  th {
+    display: none;
+  }
+
+  td:before { 
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before { content: "Ativo"; }
+  td:nth-of-type(2):before { content: "Curso ID"; }
+  td:nth-of-type(3):before { content: "Nível"; }
+  td:nth-of-type(4):before { content: "Curso"; }
+  td:nth-of-type(5):before { content: "Livro"; }
+  td:nth-of-type(6):before { content: "Editora"; }
+  td:nth-of-type(7):before { content: "Modalidade"; }
+  td:nth-of-type(8):before { content: "Carga Horária"; }
 }

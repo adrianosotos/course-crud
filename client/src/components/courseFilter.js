@@ -9,8 +9,9 @@ function CourseFilter ({ filters, setSelectedFilter }) {
   return (
     <div>
       <Select
-        label={'Selecione o Curso'}
+        label={'Selecione o Curso:'}
         onChange={handleSelectedFilter}
+        styleClass={'filter-select'}
       >
           <option value='/'>TODOS</option>
           {filters.map(filter => {

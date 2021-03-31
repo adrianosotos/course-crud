@@ -99,89 +99,107 @@ function CourseForm ({ cleanSelectedCourse, selectedCourse, updateCourse, delete
 
   return (
     <>
-      <form>
+      <form className='course-form'>
+        <div className='row'>
+          <Input 
+            label={'Curso'}
+            onChange={handleChange}
+            name={'name'}
+            value={course.name || ''}
+            onBlur={onBlur}
+            error={errors.name}
+            styleClass={'course-input'}
+          />
+        </div>
+
+        <div className='row'>
+          <Input 
+            label={'Livro'}
+            onChange={handleChange}
+            name={'book'}
+            value={course.book || ''}
+            onBlur={onBlur}
+            error={errors.book}
+            styleClass={'course-input'}
+          />
+
+          <Input 
+            label={'Editora'}
+            onChange={handleChange}
+            name={'bookPublisher'}
+            value={course.bookPublisher || ''}
+            onBlur={onBlur}
+            error={errors.bookPublisher}
+            styleClass={'course-input'}
+          />
+        </div>
+
+        <div className='row'>
         <Input
-          label={'Nível'}
-          onChange={handleChange}
-          name={'level'}
-          value={course.level || ''}
-          onBlur={onBlur}
-          error={errors.level}
-        />
-        
-        <Input 
-          label={'Curso'}
-          onChange={handleChange}
-          name={'name'}
-          value={course.name || ''}
-          onBlur={onBlur}
-          error={errors.name}
-        />
+            label={'Nível'}
+            onChange={handleChange}
+            name={'level'}
+            value={course.level || ''}
+            onBlur={onBlur}
+            error={errors.level}
+            styleClass={'course-input small-input'}
+          />
 
-        <Input 
-          label={'Livro'}
-          onChange={handleChange}
-          name={'book'}
-          value={course.book || ''}
-          onBlur={onBlur}
-          error={errors.book}
-        />
+          <Select
+            label={'Ativo:'}
+            onChange={handleChange}
+            name={'active'}
+            value={course.active || ''}
+            onBlur={onBlur}
+            error={errors.active}
+            styleClass={'course-input select'}
+          >
+            <option value="yes">Sim</option>
+            <option value="no">Não</option>
+          </Select>
 
-        <Input 
-          label={'Editora'}
-          onChange={handleChange}
-          name={'bookPublisher'}
-          value={course.bookPublisher || ''}
-          onBlur={onBlur}
-          error={errors.bookPublisher}
-        />
+          <Input 
+            label={'Carga Horária'}
+            onChange={handleChange}
+            name={'duration'}
+            value={course.duration || ''}
+            onBlur={onBlur}
+            error={errors.duration}
+            styleClass={'course-input small-input'}
+          />
+          <Select
+            label={'Modalidade:'}
+            onChange={handleChange}
+            name={'modality'}
+            value={course.modality || ''}
+            onBlur={onBlur}
+            error={errors.modality}
+            styleClass={'course-input select'}
+          >
+            <option value="inPerson">Presencial</option>
+            <option value="online">À Distância</option>
+          </Select>
+          <Input 
+            label={'Curso ID'}
+            onChange={handleChange}
+            name={'courseId'}
+            value={course.courseId || ''}
+            onBlur={onBlur}
+            error={errors.courseId}
+            styleClass={'course-input small-input'}
+          />
+        </div>
 
-        <Select
-          label={'Ativo'}
-          onChange={handleChange}
-          name={'active'}
-          value={course.active || ''}
-          onBlur={onBlur}
-          error={errors.active}
-        >
-          <option value="yes">Sim</option>
-          <option value="no">Não</option>
-        </Select>
+        <div className='row'>
 
-        <Select
-          label={'Modalidade'}
-          onChange={handleChange}
-          name={'modality'}
-          value={course.modality || ''}
-          onBlur={onBlur}
-          error={errors.modality}
-        >
-          <option value="inPerson">Presencial</option>
-          <option value="online">À Distância</option>
-        </Select>
-
-        <Input 
-          label={'Carga Horária'}
-          onChange={handleChange}
-          name={'duration'}
-          value={course.duration || ''}
-          onBlur={onBlur}
-          error={errors.duration}
-        />
-
-        <Input 
-          label={'Curso ID'}
-          onChange={handleChange}
-          name={'courseId'}
-          value={course.courseId || ''}
-          onBlur={onBlur}
-          error={errors.courseId}
-        />
+        </div>
       </form>
-      <button onClick={handleSubmit}>Salvar</button>
-      <button onClick={handleUpdateCourse}>Alterar</button>
-      <button onClick={() => deleteCourse(course)}>Deletar</button>
-      <button onClick={cleanSelectedCourse}>Limpar</button>
+      <div className='controls'>
+        <button onClick={handleSubmit}>Salvar</button>
+        <button onClick={handleUpdateCourse}>Alterar</button>
+        <button onClick={() => deleteCourse(course)}>Deletar</button>
+        <button onClick={cleanSelectedCourse}>Limpar</button>
+      </div>
     </>
   )
 }

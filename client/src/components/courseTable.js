@@ -18,14 +18,14 @@ function CourseTable ({ courses, selectCourse }) {
               id={index}
               onClick={selectCourse}
             >
-              <th>{active}</th>
-              <th>{courseId}</th>
-              <th>{level}</th>
-              <th>{name}</th>
-              <th>{book}</th>
-              <th>{bookPublisher}</th>
-              <th>{modality}</th>
-              <th>{duration}</th>
+              <td>{active}</td>
+              <td>{courseId}</td>
+              <td>{level}</td>
+              <td>{name}</td>
+              <td>{book}</td>
+              <td>{bookPublisher}</td>
+              <td>{modality}</td>
+              <td>{duration}</td>
             </tr>
           )
         }) }

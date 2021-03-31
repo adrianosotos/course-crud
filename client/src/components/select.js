@@ -1,6 +1,6 @@
-function Select ({children, label, onChange, name, value, error, onBlur}) {
+function Select ({children, label, onChange, name, value, error, onBlur, styleClass = ''}) {
   return (
-    <>
+    <div className={styleClass}>
       <label>{label}</label>
       <select
         value={value}
@@ -12,7 +12,7 @@ function Select ({children, label, onChange, name, value, error, onBlur}) {
         { children.map(option => option) }
       </select>
       <div className='input-error'>{error}</div>
-    </>
+    </div>
   )
 }
 

@@ -9,15 +9,16 @@ function Header () {
 
   return (
     <header>
-      {
-        user ?
-          <>
-            <Link to='/'>Dashboard</Link>
-            <button to='/' onClick={logoutUser}>Sair</button>
-          </>
-          :
-          <Link to='/'>Logar/Registrar</Link>
-      }
+      <nav>
+        {user ?
+            <>
+              <Link to='/'>Dashboard</Link>
+              <a to='/' onClick={logoutUser}>Sair</a>
+            </>
+            :
+            <Link to='/'>Logar/Registrar</Link>
+        }
+      </nav>
     </header>
   )
 }
