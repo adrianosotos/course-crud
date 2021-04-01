@@ -135,7 +135,7 @@ function CourseForm ({ cleanSelectedCourse, selectedCourse, updateCourse, delete
         </div>
 
         <div className='row'>
-        <Input
+          <Input
             label={'Nível'}
             onChange={handleChange}
             name={'level'}

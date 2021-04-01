@@ -9,7 +9,7 @@ function Input ({ label, onChange, name, type, value, error, onBlur, styleClass 
         value={value}
         onBlur={onBlur}
       />
-      <div className='input-error'>{error}</div>
+      <div className='error'>{error}</div>
     </div>
   )
 }

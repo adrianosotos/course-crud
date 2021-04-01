@@ -11,7 +11,7 @@ function Select ({children, label, onChange, name, value, error, onBlur, styleCl
         <option disabled selected={!Boolean(value)}></option>
         { children.map(option => option) }
       </select>
-      <div className='input-error'>{error}</div>
+      <div className='error'>{error}</div>
     </div>
   )
 }

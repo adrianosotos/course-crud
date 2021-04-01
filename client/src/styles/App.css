@@ -62,6 +62,11 @@ nav a:hover {
   width: 30%;
 }
 
+.error {
+  color: red;
+  text-align: center;
+}
+
 .dashboard {
   margin: auto;
   width: 70%;

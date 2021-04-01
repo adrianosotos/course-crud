@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export default function useFindUser(history) {
+export default function useFindUser() {
   const [user, setUser] = useState(null);
   useEffect(() => {
       

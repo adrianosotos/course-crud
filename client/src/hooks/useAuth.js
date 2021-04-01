@@ -4,9 +4,9 @@ import axios from 'axios'
 import { UserContext } from '../hooks/userContext'
 
 export default function useAuth() {
+  const [error, setError] = useState()
   let history = useHistory()
   const { setUser } = useContext(UserContext) || {}
-  const [error, setError] = useState(null)
 
   async function setUserContext (token) {
     return await axios.post('http://localhost:5000/api/users',
@@ -17,7 +17,7 @@ export default function useAuth() {
         setUser(res.data.user)
         history.push('/')
       }).catch((error) => {
-        setError(error.response.data)
+        setError(error.response.data.msg)
       })
   }
 
@@ -31,7 +31,7 @@ export default function useAuth() {
         window.localStorage.setItem('token', res.data.jwt)
         await setUserContext(res.data.jwt)
       })
-      .catch((error) => setError(error.msg))
+      .catch((error) => setError(error.response.data.msg))
   }
 
   async function loginUser (data) {
@@ -45,7 +45,10 @@ export default function useAuth() {
         window.localStorage.setItem('token', res.data.jwt)
         await setUserContext(res.data.jwt)
       })
-      .catch(error => setError(error.msg))
+      .catch(error => {
+        debugger
+        setError(error.response.data.msg)
+      })
   }
 
   return { registerUser, loginUser, error }

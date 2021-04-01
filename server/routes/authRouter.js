@@ -31,11 +31,19 @@ router.post('/register', async function (req, res) {
 
   if (!email || !password) {
     res.status(400).send({
-      message: 'Missing required fields'
+      msg: 'Missing required fields'
     })
   }
 
   try {
+    const user = await User.findOne({ email })
+
+    if (user) {
+      res.status(400).send({
+        msg: 'User already exists'
+      })
+    }
+    
     const newUser = await User.create({
       email,
       password,
@@ -52,7 +60,7 @@ router.post('/login', async function (req, res) {
 
   if (!email || !password) {
     return res.status(400).send({
-      message: 'Missing required fields'
+      msg: 'Missing required fields'
     })
   }
 
@@ -60,7 +68,7 @@ router.post('/login', async function (req, res) {
 
   if (!user || password !== user.password) {
     return res.status(400).send({
-      message: 'Incorrect user or password'
+      msg: 'Incorrect user or password'
     })
   }
 

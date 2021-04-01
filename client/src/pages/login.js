@@ -3,6 +3,8 @@ import Input from '../components/input'
 import useAuth from '../hooks/useAuth'
 
 function Login () {
+  const { registerUser, loginUser, error } = useAuth()
+  console.log(error)
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -17,8 +19,6 @@ function Login () {
     })
   }
 
-  const { registerUser, loginUser, error } = useAuth()
-
   async function handleRegister () {
     await registerUser(user)
   }
@@ -29,8 +29,8 @@ function Login () {
   
   return (
     <div className="login-form">
-      <div>
-           { error && error.messages }
+      <div className="error">
+           { error }
       </div>
       <form>
         <Input 
