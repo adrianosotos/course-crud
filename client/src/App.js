@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { Route, HashRouter as Router, Switch, useHistory } from 'react-router-dom'
+import { Route, HashRouter as Router, Switch } from 'react-router-dom'
 import useFindUser from './hooks/useFindUsers'
 import { UserContext } from './hooks/userContext'
 import Dashboard from './pages/dashboard'

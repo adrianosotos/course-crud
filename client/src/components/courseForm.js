@@ -18,7 +18,7 @@ function CourseForm ({ cleanSelectedCourse, selectedCourse, updateCourse, delete
   const [errors, setErrors] = useState(coursePayload)
 
   useEffect(() => {
-    if (selectedCourse && Object.keys(selectedCourse).length != 0) {
+    if (selectedCourse && Object.keys(selectedCourse).length !== 0) {
       setErrors(coursePayload)
       setCourse(selectedCourse)
     } else {
